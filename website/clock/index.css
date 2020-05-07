@@ -1,0 +1,13 @@
+
+body{
+    background-color: black;
+}
+
+#clock{
+    font-size: 8em;
+    margin: auto;
+    text-align: center;
+    padding-top: 1em;
+    color: blue;
+    text-shadow: white 1px 0 10px;
+}
