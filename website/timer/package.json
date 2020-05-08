@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify index.js > bundle.js && uglifyjs --compress --mangle bundle.js"
+    "build": "browserify index.js > bundle.js && uglifyjs bundle.js -o bundle.min.js --compress --mangle",
+    "uglifyjs": "uglifyjs bundle.js -o bundle.min.js --compress --mangle"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^16.5.1"
+    "browserify": "^16.5.1",
+    "uglify-es": "^3.3.9"
   },
   "dependencies": {
     "easytimer.js": "^4.1.1",
