@@ -1,0 +1,62 @@
+body{
+    background-color:beige;
+}
+
+#timer{
+    margin: auto;
+    text-align: center;
+}
+
+h1{
+    font-size: 2em;
+}
+
+#buttons{
+    margin: auto;
+    text-align: center;
+}
+
+#time{
+    font-size: 5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+input{
+    border: 0;
+    padding: 10px;
+    font-size: 1.5em;
+    width: 100px;
+    margin-bottom: 2em;
+}
+
+.btn{
+    background-color: transparent;
+    font-size: 1em;
+    color:white;
+    background-color: blue;
+    font-weight: bold;
+    padding: 10px 10px;
+    border-style: none;
+    box-shadow: 2px 2px 3px 1px darkblue ;
+}
+#start{
+    margin-right: 30px;
+}
+#pause{
+    margin-left: 30px;
+}
+
+.btn:hover{
+    background-color: skyblue;
+    color: white;
+}
+
+#credit{
+    position: fixed;
+    bottom: 0;
+}
+
+audio{
+    display: none;
+}

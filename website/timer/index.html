@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>タイマー</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="tingle.min.css">
+    </head>
+    <body>
+        <audio id="audio" src="./Clock-Alarm04-05(Loop).mp3" preload="auto" loop controls></audio>
+        <div id="timer">
+            <h1>タイマー</h1>
+            <div id="time">
+
+            </div>
+            <div id="input">
+                <input type="number" id="hour" value="0">
+                <span>時間</span>
+                <input type="number" id="minute" value="10" >
+                <span>分</span>
+                <input type="number" id="second" value="0">
+                <span>秒</span>
+            </div>
+            <div id="buttons">
+                <button id="start" class="btn">スタート</button>
+                <button id="pause" class="btn">ストップ</button>
+
+            </div>
+            <div id="credit">
+                <span>使用した音素材：OtoLogic(https://otologic.jp)</span>
+            </div>
+        </div>
+          
+        <script src="./bundle.js"></script>
+    </body>
+</html>
