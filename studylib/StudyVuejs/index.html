@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.jsの勉強</title>
+    </head>
+    <body>
+        <div id="app">
+            {{message}}
+        </div>
+        <div id="app4">
+            <ol>
+                <li v-for="todo in todos">
+                    {{todo.text}}
+                </li>
+            </ol>
+        </div>
+        <div id="app5">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+        <div id="app6">
+            <p>{{message}}</p>
+            <input v-model="message">
+        </div>
+        <div id="app7">
+            <ol>
+                <todo-item v-for="item in groceryList" v-bind:todo="item"
+                    v-bind:key="item.id"></todo-item>
+            </ol>
+        </div>
+
+        <script src="bundle.js"></script>
+    </body>
+</html>
