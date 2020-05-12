@@ -17,12 +17,6 @@ export default {
 </script>
 
 <style scoped>
-/* header ul li{
-    display:flex;
-    padding:10px;
-    border: 1px solid #333;
-    background:pink;
-} */
 
 header{
     background: darkslateblue;

@@ -11,7 +11,7 @@
 import {eventBus} from "../main"
 import katex from "katex"
 import "katex/dist/katex.min.css"
-// import renderMathInElement from "katex/dist/contrib/auto-render.js"
+
 import "jsxgraph/distrib/jsxgraph.css"
 import JXG from "jsxgraph/distrib/jsxgraphcore.js"
 
@@ -72,11 +72,6 @@ export default {
 
             this.board.unsuspendUpdate();
 
-        }
-    },
-    watch:{
-        vectors:function(){
-            console.log("changed");
         }
     },
     computed:{

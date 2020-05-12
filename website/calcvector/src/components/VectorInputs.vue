@@ -18,8 +18,6 @@ export default {
     },
     methods:{
         onVectorsUpdated:function() {
-            // console.log(`name:${obj.vectorName} , x:${obj.x},y:${obj.y}`);
-            // console.log(this.$children);
             eventBus.$emit("onVectorsUpdated",{
                 vectors:this.getVectors()
             });
