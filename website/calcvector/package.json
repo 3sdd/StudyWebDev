@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "jsxgraph": "^1.0.0",
+    "katex": "^0.11.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
