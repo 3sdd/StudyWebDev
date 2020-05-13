@@ -3,10 +3,12 @@
     <PageHeader siteName="ベクトル計算" id="header"/>
     <div id="contents">
       <h1>2次元ベクトル計算</h1>
-      <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+      <p id="content-description">
+        2つのベクトル(ベクトルa,ベクトルb)の成分の計算が出来ます。
+        元のベクトルと計算結果のベクトルがグラフに表示されます。
+      </p>
       <VectorInputs></VectorInputs>
-      <VectorCalculation></VectorCalculation>
-      <!-- <HelloWorld msg="Welcome to Your Vue.js App hello hello"/> -->
+      <VectorCalculation id="result"></VectorCalculation>
       
     </div>
 
@@ -15,7 +17,6 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import PageHeader from "./components/PageHeader.vue"
 import VectorInputs from "./components/VectorInputs.vue"
 import VectorCalculation from "./components/VectorCalculation"
@@ -26,6 +27,9 @@ export default {
     PageHeader,
     VectorInputs,
     VectorCalculation
+  },
+  created:function(){
+    this.$ga.page("/");
   }
 }
 </script>
@@ -41,8 +45,20 @@ export default {
   padding:0;
   margin:0;
   width: 100%;
+  font-size: 25px;
 }
 
+h1{
+  padding-top:20px;
+  padding-bottom:10px;
+  border-bottom: solid 10px purple;
+}
+
+#content-description{
+  margin-top:10px;
+  margin-bottom:20px;
+  padding:5px 50px;
+}
 
 /* なんでこれないと余白ができるのか？
 https://teratail.com/questions/184961*/
@@ -60,6 +76,9 @@ https://teratail.com/questions/184961*/
     margin:auto;
     background: whitesmoke;
     border-radius: 15px;
-
+    padding: 20px 20px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
 }
+
 </style>

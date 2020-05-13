@@ -1,27 +1,28 @@
 <template>
     <div class="vector-input">
         <span>
-            <math>
-                <mover>
-                    <mi> {{vectorName}}</mi>
-                    <mo>&rarr;</mo>
-                </mover>
-            </math>
-             =
+            <span v-html="renderVector(vectorName)"></span>
+            =
         </span>
         <span>(</span>
-        <label :for="vectorName+'-x'">x:</label>
-        <input type="number" :name="vectorName+'-x'"  v-model="x">
-        <span>, </span>
-        <label :for="vectorName+'-y'">y:</label>
-        <input type="number" :name="vectorName+'-y'" v-model="y">
+        <div class="v-elem">
+            <label :for="vectorName+'-x'">x: </label>
+            <input type="number" :name="vectorName+'-x'"  v-model="x">
+        </div>
+
+        <span> , </span>
+        <div class="v-elem">
+            <label :for="vectorName+'-y'">y: </label>
+            <input type="number" :name="vectorName+'-y'" v-model="y">
+        </div>
         <span>)</span>
     </div>
 </template>
 
 <script>
 
-
+import katex from "katex"
+import "katex/dist/katex.min.css"
 
 export default {
     name:"VectorInput",
@@ -70,6 +71,10 @@ export default {
             }
             
             );
+        },
+        renderVector(name){
+            const text=`\\vec{${name}}`;
+            return katex.renderToString(text);
         }
     }
 }
@@ -77,4 +82,27 @@ export default {
 
 <style scoped>
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label{
+    width:20%;
+}
+
+input[type="number"]{
+    -moz-appearance:textfield;
+    width:50%;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.v-elem{
+    display: inline-block;
+    width: 100px;
+}
 </style>
