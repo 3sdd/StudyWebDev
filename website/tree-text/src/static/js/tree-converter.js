@@ -1,6 +1,6 @@
 
 
-
+//depth はsystem rootが-1,ユーザー入力は0以上
 class Node{
     constructor(depth,text,parent,children=[]){
         this.isRoot=parent==null;
@@ -34,25 +34,101 @@ class Node{
         return result;
     }
 
-    getResultText(depth,nextNodeDict){
+    //iだけ上のparentを取得
+    getParent(numDepthToParent=1){
+        let parent=this;
+        for(let i=0;i<numDepthToParent;i++){
+            parent=parent.parent;
+        }
+        return parent;
+    }
+
+
+    getResultText(depth){
+        // console.log("@"+depth+"------------------------------")
         if(depth===-1){
             return "";
         }
+        //1 line をdepthごとに区切ったものに対して
+        //一番最後のテキスト部分を除いたものに対して行う
         let result="";
-        for(let i=0;i<depth;i++){
-            result+="      ";
+        // for(let i=0;i<depth-1;i++){
 
+        //depth 大きい順、つまり現在のnodeのdepthから始める
+        let node=this;
+        // let pi=1;
+        for(let i=depth-1;i>=0;i--){
+            // console.log("＞＞＞pi "+pi);
+
+            // node=this.getParent(pi++);
+            // console.log(node);
+
+            if(i===depth-1){
+                console.log("最後の欄")
+                // console.log("i:"+i);
+                // console.log(node)
+                // console.log("次の兄弟要素あるか"+node.hasNextSibling())
+                if(node.hasNextSibling()){
+                    result=" |─  "+result;
+                }else{
+                    result="└─  "+result;
+                }
+                node=node.parent;
+                continue;
+            }
+            // console.log("i:"+i);
+            // console.log("次の兄弟要素あるか"+node.hasNextSibling())
+            if(node.hasNextSibling()){
+                result=" |     "+result;
+            }else{
+                result="      "+result;
+            }
+
+            node=node.parent;
         }
-        result+=this.text+"\n";
-        nextNodeDict[depth]=true;
+
+            
+        //     // //一番後ろはテキスト
+        //     // if(i==this.depth-1){
+        //     //     nextNodeDict[depth]=this.hasNextSibling();
+        //     //     if(this.hasNextSibling()){
+        //     //         result+="|─    "
+        //     //     }else{
+        //     //         result+="└─    "
+        //     //     }
+        //     //     result+=this.text+"\n";
+        //     //     break;
+        //     // }
+
+
+            
+        //     //次の兄弟ノードがある
+        //     if(nextNodeDict[depth]){
+        //         result+=" |    "
+
+        //         // if(this.hasNextSibling()){
+
+        //         // }
+
+
+        //     }else{
+        //         // result+="└─    ";
+        //         result+=" |    ";
+        //     }
+
+        // }
+        result+=this.text+"\n";//最後にtextを足す
+
+        // nextNodeDict[depth]=this.hasNextSibling();
         return result;
     }
 
-    toTreeText(depth,text,nextNodeDict={}){
+
+    toTreeText(depth,text){
         //再帰
-        console.log(depth)
-        console.log(this.hasNextSibling())
-        nextNodeDict[depth]=this.hasNextSibling();
+        // console.log("^^^^^^^^^^^^^^line:"+depth)
+        // console.log(this.hasNextSibling())
+        // nextNodeDict[depth]=this.hasNextSibling();
         
         let result="";
         // if(depth==0){
@@ -63,7 +139,8 @@ class Node{
         //     let space=(depth<=1?"":"│")+"        ".repeat(Math.max(0,depth-1))+ (this.hasNextSibling()?"├───":"└─");
         //     result=(depth+space+this.text+"\n"); 
         // }
-        result=this.getResultText(depth,nextNodeDict)
+        // console.log(result);
+        result=this.getResultText(depth);
 
         //一番下の子(葉)の部分
         if(this.children.lenth===0){   
@@ -81,15 +158,26 @@ class Node{
         this.isRoot=false;
     }
 
+    hasNextChildNode(){
+        if(!this.children){
+            return false;
+        }
+
+
+    }
+
     hasNextSibling(){
         if(!this.parent){
             return false;
         }
 
         const siblings=this.parent.children;
+
         for(let i=0;i<siblings.length;i++){
-            if(siblings[i]==this){
-                if(i==siblings.length-1){
+            if(siblings[i]===this){
+                // console.log("みつけた"+i)
+                //自分が最後の子のとき
+                if(i===siblings.length-1){
                     return false;
                 }else{
                     return true;
@@ -98,11 +186,42 @@ class Node{
         }
         throw new Error("siblingsに含まれていない")
     }
+
+    //自分を含む子ノードの数を返す
+    getNumChildrenNodesIncludingThisNode(nodeCounter=0){
+        nodeCounter++;
+        if(this.children.length===0){
+            return nodeCounter;
+        }
+        for(const node of this.children){
+            nodeCounter=node.getNumChildrenNodesIncludingThisNode(nodeCounter);
+        }
+        return nodeCounter;
+
+    }
+
+    getMaxDepth(depth=0){
+        depth++;
+        if(this.children.length===0){
+            return depth;
+        }
+
+        let dtmp=depth;
+        console.log("hi")
+        for(const node of this.children){
+            const d=node.getMaxDepth(depth);
+            console.log(d)
+
+            dtmp=Math.max(dtmp,d);
+        }
+
+        return dtmp;
+    }
 }
 
 class Tree{
     constructor(){
-        this.root=new Node(0,"");
+        this.root=new Node(-1,"");
     }
 
 
@@ -113,6 +232,15 @@ class Tree{
 
     toTreeText(){
         return this.root.toTreeText(-1);
+    }
+
+    getNumNodes(){
+        //rootは除く
+        return this.root.getNumChildrenNodesIncludingThisNode()-1;
+    }
+
+    getMaxDepth(){
+        return this.root.getMaxDepth();
     }
 }
 
@@ -156,13 +284,14 @@ function createTree(lineArray){
 }
 
 export default function convert(inputText){
-    console.log(inputText);
+    // console.log(inputText);
     let lines=inputText.split(/\r\n|\r|\n/);
-    console.log(lines)
+    // console.log(lines)
 
     
     const tree=createTree(lines);
-    console.log(tree);
+    // console.log(tree);
     let resultText=tree.toTreeText();
+    // console.log("counter:"+tree.getNum())
     return resultText;
 }

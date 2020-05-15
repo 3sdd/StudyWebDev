@@ -15,5 +15,9 @@ export default {
   フォルダーAA
   フォルダーAB
  フォルダーB
-  フォルダーBA`
+  フォルダーBA`,
+  jaSampleText2:
+`ルート
+ a
+ b`
 }

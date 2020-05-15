@@ -37,7 +37,7 @@ export default {
         }
     },
     mounted:function(){
-        this.inputText=sampleTexts.jaSampleText;
+        this.inputText=sampleTexts.jaSampleText2;
     },
     watch:{
         inputText:function(text){
