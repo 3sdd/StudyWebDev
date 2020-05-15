@@ -5,7 +5,7 @@
 
             <!-- Copyright -->
             <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright:
-                <a href="#" class="text-light"> コピーライト</a>
+                <a href="https://twitter.com/__msdd__" class="text-light"> msdd</a>
             </div>
             <!-- Copyright -->
 
