@@ -5,9 +5,7 @@
                 説明
             </div>
             <div col-sm-12>
-
-                ツリーのような表記に変更します。  
-
+                左側にtreeコマンドのように、変形します。  
             </div>
 
         </div>
@@ -15,27 +13,32 @@
             <div class="col-sm-6">
                 <h2 class="h2">入力</h2>
                 <div>
-                    <textarea class="form-control" rows="10" cols="40" v-model="inputText"></textarea>
+                    <textarea class="form-control" rows="15" cols="50" v-model="inputText"></textarea>
                 </div>
             </div>
             <div class="col-sm-6">
                 <h2 class="h2">出力</h2>
                 <div>
 
-                    <textarea class="form-control" rows="10" cols="40" readonly v-model="outputText">text</textarea>
+                    <textarea class="form-control" rows="15" cols="50" readonly v-model="outputText">text</textarea>
                 </div>
-                <b-button variant="dark" v-clipboard:copy="outputText" v-clipboard:success="onCopy" v-clipboard:error="onError">
-                    <font-awesome-icon icon="copy" />
-                    コピー
-                </b-button>
-                <b-button variant="dark" @click="downloadText">
-                    <font-awesome-icon icon="file-download" />
-                    ダウンロード
-                </b-button>
+ 
 
             </div>
 
+    
+        </div>
 
+        <div class="button-group">
+            <b-button variant="dark" v-clipboard:copy="outputText" v-clipboard:success="onCopy" v-clipboard:error="onError">
+                <font-awesome-icon icon="copy" />
+                コピー
+            </b-button>
+            <b-button variant="dark" @click="downloadText">
+                <font-awesome-icon icon="file-download" />
+                ダウンロード
+            </b-button>
+  
         </div>
     </div>
 
@@ -92,5 +95,9 @@ textarea{
 .container{
     margin-top: 100px;
     margin-bottom: 100px;
+}
+
+.btn{
+    padding: 10px 20px;
 }
 </style>
