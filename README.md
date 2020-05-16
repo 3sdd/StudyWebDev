@@ -40,3 +40,22 @@ vueの勉強も兼ねていました。@vue/cliを使ってプロジェクトを
 |vue | サイト全般 |
 | jsxgraph |ベクトルをグラフ上に描画するために使用|
 | katex | ベクトル記号などの式を描画するのに使用|
+
+
+## 4. TreeText
+
+インデントしたテキストをtreeコマンドを実行したように、ツリー状にする。
+VueRouterとBootstrapVueの試しで作りました。
+
+サイト公開するためリポジトリ移動しました。
+
+url: <https://www.treetext.online>
+
+| 使ったライブラリ | 内容|
+|- | - |
+|@vue/cli | プロジェクト作成、開発用、ビルドなど。 |
+|vue | サイト全般 |
+| bootstrap-vue |デザインで使用|
+| vue-router | ページの設定するため使用 |
+| vue-head | <head>の情報を書き換えるため使用 |
+| vue-clipboard2 | ツリー上にしたテキストをコピーするために使用 |
