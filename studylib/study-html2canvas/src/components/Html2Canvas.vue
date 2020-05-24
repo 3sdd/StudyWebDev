@@ -1,15 +1,20 @@
 <template>
   <div>
     <h1>hi</h1>
-    <div class="ss-area">
-      <span>ss-area</span>
+    <div>
+      <div class="ss-area">
+      <span>{{message}}</span>
       <textarea rows="10" cols="50">
       </textarea>
     </div>
-    <button class="favorite styled"
-            type="button" @click="takeScreenshot">
-        SS保存
-    </button>
+    </div>
+
+    <div>
+      <button class="favorite styled"
+              type="button" @click="takeScreenshot">
+          SS保存
+      </button>
+    </div>
   </div>
 </template>
 
@@ -18,8 +23,10 @@ import html2canvas from "html2canvas"
 
 export default {
   name: 'Html2Canvas',
-  props: {
-
+  data:function(){
+    return {
+      message:"hello"
+    }
   },
   methods:{
     takeScreenshot(){
